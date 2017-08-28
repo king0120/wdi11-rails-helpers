@@ -1,11 +1,9 @@
-<h2>Artists <a href="/artists/new">(+)</a></h2>
+<h2>Artists <%= link_to "(+)", new_artist_path %></h2>
 
-<ul>
+<ul>  
   <% @artists.each do |artist| %>
     <li>
-      <a href="/artists/<%= artist.id %>">
-        <%= artist.name %>
-      </a>
+      <%= link_to artist.name, artist_path(artist)%>
     </li>
   <% end %>
 </ul>

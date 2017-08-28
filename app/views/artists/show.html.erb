@@ -1,16 +1,14 @@
-<h2><%= @artist.name %> <a href="/artists/<%= @artist.id %>/edit">(edit)</a></h2>
+<h2><%= @artist.name %> <%= link_to "(edit)", edit_artist_path(@artist) %></h2>
 <h4><%= @artist.nationality %></h4>
 
-<img class='artist-photo' src="<%= @artist.photo_url %>">
+<%= image_tag @artist.photo_url, alt: @artist.name, class: "artist-photo" %>
 
-<h3>Songs <a href="/songs/new">(+)</a></h3>
+<h3>Songs <%= link_to "(+)", new_song_path %></h3>
 
 <ul>
   <% @artist.songs.each do |song| %>
     <li>
-      <a href="/songs/<%= song.id %>">
-        <%= "#{song.title} (#{song.album})" %>
-      </a>
+      <%= link_to "#{song.title} (#{song.album})", song_path(song)%>
     </li>
   <% end %>
 </ul>

@@ -13,7 +13,7 @@ class SongsController < ApplicationController
   def create
     @song = Song.create(song_params)
 
-    redirect_to "/songs/#{@song.id}"
+    redirect_to song_path(@song)
   end
 
   #show
@@ -31,7 +31,7 @@ class SongsController < ApplicationController
     @song = Song.find(params[:id])
     @song.update(song_params)
 
-    redirect_to "/songs/#{@song.id}"
+    redirect_to song_path(@song)
   end
 
   # destroy
@@ -39,7 +39,7 @@ class SongsController < ApplicationController
     @song = Song.find(params[:id])
     @song.destroy
 
-    redirect_to "/songs"
+    redirect_to songs_path
   end
 
   private
